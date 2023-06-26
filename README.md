@@ -1,4 +1,4 @@
-# Страница с фактами о Star Wars
+# Фото профиля
 
 Учебный проект курса [React для JS-разработчиков](https://netology.ru/programs/react)
 
