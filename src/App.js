@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useSelector } from 'react-redux';
+
+import FileUploader from './components/FileUploader';
+import LastFoto from './components/LastFoto';
+import FotoList from './components/FotoList';
 
 function App() {
+  const fotoName = useSelector((state) => state.lastFotoName);
+  const fotoURL = useSelector((state) => state.lastFotoURL);
+
+  const isFotoFile = fotoName && fotoURL ? true : false;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className="file-uploader__title">File Uploader</h1>
+      <FileUploader />
+      {!isFotoFile && <img className="file-uploader__no-foto-img" src="./images/no-image.jpg" alt="No foto" />}
+      {isFotoFile && <div className="file-uploader__list-wrapper">
+        <LastFoto />
+        <FotoList />
+      </div>}
     </div>
   );
 }
